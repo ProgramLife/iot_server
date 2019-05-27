@@ -16,6 +16,7 @@ public class MsgEncoder extends MessageToByteEncoder<MsgProtocol> {
         if (msgProtocol.getVersion() == MsgConsts.HERT_VERSION) {
             out.writeByte(MsgConsts.HEART_MSG);
         } else {
+            out.writeByte(msgProtocol.getHeadData());
             out.writeInt(msgProtocol.getMsgBodyLen());
             out.writeByte(msgProtocol.getVersion());
             out.writeShort(msgProtocol.getFlags());

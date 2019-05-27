@@ -1,5 +1,6 @@
 package com.xxx.iot.tcp.handler;
 
+import com.xxx.iot.tcp.codec.MsgProtocol;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -22,13 +23,32 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        super.channelActive(ctx);
-        logger.info("");
+        MsgProtocol msgProtocol = new MsgProtocol();
+        msgProtocol.setCc((short) 300);
+        msgProtocol.setSessionId(1234);
+        msgProtocol.setFlags((byte)1);
+        msgProtocol.setVersion((byte)1);
+        String body = "hello netty client";
+        byte[] bodyArr = body.getBytes();
+        msgProtocol.setBody(bodyArr);
+        msgProtocol.setMsgBodyLen(bodyArr.length);
+        ctx.writeAndFlush(msgProtocol);
+        logger.info("连接成功" + bodyArr.length);
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         super.channelRead(ctx, msg);
+        MsgProtocol msgProtocol = new MsgProtocol();
+        msgProtocol.setCc((short) 16);
+        msgProtocol.setSessionId(1234);
+        msgProtocol.setFlags((byte)1);
+        msgProtocol.setVersion((byte)1);
+        String body = "hello netty client";
+        byte[] bodyArr = body.getBytes();
+        msgProtocol.setBody(bodyArr);
+        msgProtocol.setMsgBodyLen(bodyArr.length);
+        ctx.writeAndFlush(msgProtocol);
     }
 
     @Override

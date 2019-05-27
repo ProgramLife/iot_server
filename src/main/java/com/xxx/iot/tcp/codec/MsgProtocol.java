@@ -1,5 +1,7 @@
 package com.xxx.iot.tcp.codec;
 
+import static com.xxx.iot.tcp.codec.MsgConsts.HEAD_DATA;
+
 /**
  * @Author: cdp
  * @Date: 2019/5/15 13:30
@@ -10,12 +12,26 @@ public class MsgProtocol {
     /** 消息头长度 **/
     public static final int HEADER_LEN = 10;
 
+    private int headData = HEAD_DATA;           // 消息头标志
     private int msgBodyLen;         // 消息体长度
     private byte version;           // 消息版本
     public byte flags;              // 消息加密方式
     transient public short cc;      // 校验码
     private int sessionId;          // 会话id
     transient public byte[] body;   // 消息体
+
+    public MsgProtocol() {
+
+    }
+
+
+    public int getHeadData() {
+        return headData;
+    }
+
+    public void setHeadData(int headData) {
+        this.headData = headData;
+    }
 
     public static int getHeaderLen() {
         return HEADER_LEN;

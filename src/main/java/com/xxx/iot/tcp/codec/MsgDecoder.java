@@ -10,7 +10,7 @@ import java.util.List;
  * @Author: cdp
  * @Date: 2019/5/15 13:29
  * @Version 1.0
- * msgBodyLen(4) + version(1) + flags(1) + cc(2) + sessionId(4) + body(n)
+ * head(1) + msgBodyLen(4) + version(1) + flags(1) + cc(2) + sessionId(4) + body(n)
  */
 public class MsgDecoder extends ByteToMessageDecoder {
     @Override

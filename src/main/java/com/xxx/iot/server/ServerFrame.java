@@ -25,7 +25,7 @@ import java.awt.event.WindowEvent;
 /**
  * Created by chen on 2019/2/15
  */
-//@Component
+@Component
 public class ServerFrame extends JFrame implements EventObserver {
 
     @Autowired
@@ -110,6 +110,7 @@ public class ServerFrame extends JFrame implements EventObserver {
         box.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
         box_1.add(address_lb);
         box_1.add(address_field);
+        box_1.add(new JLabel("    "));
         box_1.add(port_lb);
         box_1.add(port_field);
         heart_check.setSelected(isHeartLog);
@@ -117,6 +118,7 @@ public class ServerFrame extends JFrame implements EventObserver {
         box_1.add(start_bt);
         stop_bt.setVisible(false);
         box_1.add(stop_bt);
+        box_1.add(new JLabel("    "));
         box_1.add(clear_log_bt);
 
         this.getContentPane().add(scrollPane);

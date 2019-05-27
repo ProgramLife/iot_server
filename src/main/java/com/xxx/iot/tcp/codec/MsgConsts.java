@@ -7,6 +7,7 @@ package com.xxx.iot.tcp.codec;
  */
 public class MsgConsts {
 
+    public static final byte HEAD_DATA = (byte)0xff;
     public static final int  MAX_BODY_LEN = 1024;
     public static final byte HEADER_LEN = 12;
 
