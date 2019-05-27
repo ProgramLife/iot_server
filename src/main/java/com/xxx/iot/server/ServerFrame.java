@@ -25,7 +25,7 @@ import java.awt.event.WindowEvent;
 /**
  * Created by chen on 2019/2/15
  */
-@Component
+//@Component
 public class ServerFrame extends JFrame implements EventObserver {
 
     @Autowired
